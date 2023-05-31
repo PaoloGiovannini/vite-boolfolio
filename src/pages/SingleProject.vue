@@ -32,6 +32,7 @@ export default {
         axios.get(`${this.store.url}/api/project/${slug}`)
         .then(response =>{
             this.project = response.data.project;
+            console.log(this.project)
         })
     }
 }
