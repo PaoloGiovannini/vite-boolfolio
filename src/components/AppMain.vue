@@ -3,11 +3,7 @@
         <div class="row">
             <div class="col-4 py-2" v-for="project in projects">
                 <ProjectCard 
-                :title="project.title"
-                :content="project.content"
-                :image="project.image"
-                :url="url"
-                :type="project.type?.name"
+                :project="project"
                 />
             </div>
 
@@ -23,6 +19,7 @@
 <script>
     import axios from 'axios';
     import ProjectCard from './ProjectCard.vue';
+    import { store } from '../store.js';
 
     export default{
         name: "AppMain",
@@ -34,12 +31,13 @@
                 projects: [],
                 url: 'http://localhost:8000',
                 currentPage: 1,
-                lastPage:null
+                lastPage:null,
+                store
             }
         },
         methods:{
             getProjects(changePage){
-                axios.get(`${this.url}/api/projects`,
+                axios.get(`${this.store.url}/api/projects`,
                 {
                     params:{
                         page:changePage
