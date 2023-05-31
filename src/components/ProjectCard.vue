@@ -6,6 +6,9 @@
             <h5 class="card-title">{{ project.title }}</h5>
             <p class="card-text">{{ project.content }}</p>
             <h5>{{project.type?.name}}</h5>
+            <router-link :to="{name: 'single-project', params: {slug: project.slug}}" class="btn btn-primary">
+                Vedi
+            </router-link>
         </div>
     </div>
 </template>
